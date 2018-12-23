@@ -1227,7 +1227,7 @@
           
             <div class="col-sm-12 col-md-9 blog-pull-right">
                
-                    <div class="upcoming-events media maxwidth400 bg-light mb-20" *ngFor="let app of apps ">
+                    <div class="upcoming-events media maxwidth400 bg-light mb-20" *ngFor="let app of apps " >
                         <div class="row equal-height">
                             <div class="col-sm-4 pr-0 pr-sm-15">
                                 <div class="thumb p-15">
@@ -1237,15 +1237,22 @@
                             <div class="col-sm-4 border-right pl-0 pl-sm-15">
                                 <div class="event-details p-15 mt-20">
                                     <h4 class="media-heading text-uppercase font-weight-500"> {{app.title}} </h4>
+                                                             
                                     <p>With Mr : {{ app.doctor.firstName }}.</p>
                                     <h6>object : {{ app.object }}.</h6>
                                     <br />
-                                    <ul>
+                                    <div *ngIf=" getDiferenceInDays(app.date_appointment)>=0 ">
+                    <span >        {{ getDiferenceInDays(app.date_appointment) | number:'1.0-0'}} days  </span>       <countdown [config]="{leftTime: getDiff(app.date_appointment)} ">$!h!H:$!m!M:$!s!S</countdown>
+                  </div>
+                  <div *ngIf="getDiferenceInDays(app.date_appointment)<0">
+<h5 style="color:red;">Passed </h5>
+                  </div>                
+                    <ul>
 
                                         <li class="text-theme-colored"><p style="color:green;">State : {{app.state}}.</p></li>
                                     </ul>
                                     <br />
-                                    <a (click)="getAppointment(app)" class="btn btn-gray btn-theme-colored btn-xs" [routerLink]="['/detail',app.id]">Details</a>  &ensp;      <button class="btn btn-gray btn-theme-colored btn-xs" [routerLink]="['/edit',app.id]">Edit</button> &ensp;  <button (click)="deleteAppointment(app)" class="btn btn-dark btn-xs">Supprimer</button>
+                                    <a (click)="getAppointment(app)" class="btn btn-gray btn-theme-colored btn-xs" [routerLink]="['/detail',app.id]">Details</a>  &ensp;|      <button class="btn btn-gray btn-theme-colored btn-xs" [routerLink]="['/edit',app.id]">Edit</button> | &ensp;  <button (click)="deleteAppointment(app)" class="btn btn-dark btn-xs">Delete</button>
                                <!--    @Html.ActionLink("Details ", "DetailsAsync", new { id = item.id }, new { @class = "btn btn-gray btn-theme-colored btn-xs" })  @Html.ActionLink("Edit ", "Edit", new { id = item.id }, new { @class = "btn btn-dark btn-theme-colored btn-xs" })  @Html.ActionLink("Delete ", "Delete", new { id = item.id }, new { @class = "btn btn-dark btn-xs" }) --> 
                                 </div>
                             </div>
@@ -1254,15 +1261,35 @@
                                 <div class="event-count p-15 mt-15">
                                    
                                         <ul class="event-date list-inline font-16 text-uppercase mt-10 mb-20">
-                                            <li class="p-15 mr-5 bg-lightest">{{app.date_appointment | date}}</li>
+                                            <li class="p-15 mr-5 bg-lightest">{{app.date_appointment | date:"yyyy-MM-dd"}}</li>
+                                            
 
                                         </ul>
                                     
                                     <ul>
+                                      
                                         <li class="mb-10 text-theme-colored"><i class="fa fa-clock-o mr-5"></i> at {{app.start_hour}}  - {{app.start_hour}}  pm</li>
                                         <li class="text-theme-colored"><i class="fa fa-map-marker mr-5"></i> Adress: {{app.doctor .adress.rue}}  {{app.doctor .adress.ville}}.</li>
                                     </ul>
-                                </div>
+                                    <br>
+                                    <div *ngIf="app.state=='accepeted' ">
+                                      <div *ngIf="app.note!=0">
+                                    <star-rating-comp [starType]="'svg'" [showHalfStars]="true" (onClick)="onClick($event)" [readOnly]="true"  [rating]="app.note"></star-rating-comp>
+                                    </div>
+                                    <div *ngIf="getDiferenceInDays(app.date_appointment)<0 && app.note==0 ">
+                                        <star-rating-comp [starType]="'svg'" [showHalfStars]="true" (onClick)="onClick($event,app.id)"  [rating]="app.note"></star-rating-comp>
+                                    </div> 
+                                  </div>
+                                   <div *ngIf="app.state=='running' ">
+                                    <star-rating-comp [starType]="'svg'" [showHalfStars]="true" (onClick)="onClick($event)" [readOnly]="true"  [rating]="0"></star-rating-comp>
+                                     After visiting the doctor please rate..
+                                  </div>
+                                  <div *ngIf="app.state=='refused' ">
+                                    <star-rating-comp [starType]="'svg'" [showHalfStars]="true" (onClick)="onClick($event)" [readOnly]="true"  [rating]="0"></star-rating-comp>
+                                     You can't rate..:(
+                                  </div>
+
+                                  </div>
                             </div>
                             
                         </div>

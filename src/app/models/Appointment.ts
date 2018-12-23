@@ -14,6 +14,8 @@ export class Appointment {
             id_doctor : number ; 
             id_patient : number ; 
             note : number ;
+            moyenne : number
+            diffDates:number
 
       constructor( title : string, date_appointment  : string , endHour : string  ,   state : string , start_hour : string ,   message : string ,  object : string  ,  note : number )
             {

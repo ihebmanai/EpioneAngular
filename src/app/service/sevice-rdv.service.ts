@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Appointment } from '../models/Appointment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -58,11 +59,20 @@ export class SeviceRdvService {
         return this.http.put<string>(this.AppointmentUrlAPI+'/update', rdv);
       }
 
+      editApp(rdv: Appointment): Observable<string> {
+        return this.http.put<string>(this.AppointmentUrlAPI+'/update', rdv);
+      }
 
-      getRateObs(): Observable <number> {
+
+      getRateObs(idDoctor:number): Observable <number> {
 
         return this.http.get<number>(this.AppointmentUrlAPI+"/rate/"+1,{ headers: new HttpHeaders().set('Access-Control-Allow-Origin', '*')});
      }
+
+     getDoctors(): Observable <User[]> {
+
+      return this.http.get<User[]>(this.AppointmentUrlAPI+"/doctors",{ headers: new HttpHeaders().set('Access-Control-Allow-Origin', '*')});
+   }
     
 
 

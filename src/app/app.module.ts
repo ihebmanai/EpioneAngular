@@ -15,6 +15,15 @@ import { ListAppointmentsComponent } from './patient/list-appointments/list-appo
 import { AddAppointmentComponent } from './patient/add-appointment/add-appointment.component';
 import { DetailsAppComponent } from './patient/details-app/details-app.component';
 import { UpdateAppComponent } from './patient/update-app/update-app.component';
+import { StarRatingModule } from 'angular-star-rating';
+
+import { MyDialogComponent } from './my-dialog/my-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { ListDoctorsComponent } from './patient/list-doctors/list-doctors.component';
+import { CountdownModule } from 'ngx-countdown';
+
+
 
 
 export class App {
@@ -22,12 +31,19 @@ export class App {
 }
 @NgModule({
   declarations: [
+    MyDialogComponent,
     AppComponent,
     ListAppointmentsComponent,
     AddAppointmentComponent,
     DetailsAppComponent,
     UpdateAppComponent,
     AuthentitcationComponent,
+    ListDoctorsComponent
+    
+    
+
+    
+    
     
   ],
   imports: [
@@ -35,12 +51,20 @@ export class App {
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ModalModule
+    ModalModule,
+    StarRatingModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    CountdownModule
+    
    
     
 
   ],
+  
   providers: [],
-  bootstrap: [AppComponent]
+  entryComponents : [MyDialogComponent],
+  bootstrap: [AppComponent],
+ 
 })
 export class AppModule { }

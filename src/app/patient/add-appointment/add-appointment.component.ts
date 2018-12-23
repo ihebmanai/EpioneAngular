@@ -20,12 +20,27 @@ export class AddAppointmentComponent implements OnInit {
   startText : string
   stateText ='running' 
   noteText : number
+  dif:boolean =false
 
   app :Appointment
   constructor( private service : SeviceRdvService) { }
 
   ngOnInit() {
   }
+  getDiferenceInDays(date : Date) : boolean  {
+    var diff
+    diff= ((new Date(date).getTime() - new Date().getTime())/ (1000 * 60 * 60 * 24)) ;
+    console.log('diff'+diff)
+    if(diff>0) return true
+    else return false
+    
+     
+ }
+
+ logDate(date){
+   console.log(date)
+ this.getDiferenceInDays(date)
+ }
 
   log(x) {
     

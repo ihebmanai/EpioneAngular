@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<!-- Mirrored from thememascot.net/demo/html/health-beauty/medical/medinova-html/v3.2/demo/page-appointment.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 11 Nov 2018 18:52:07 GMT -->
+<!-- Mirrored from thememascot.net/demo/html/health-beauty/medical/medinova-html/v3.2/demo/events-list-no-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 11 Nov 2018 18:52:38 GMT -->
 <head>
 
 <!-- Meta Tags -->
@@ -59,6 +59,7 @@
 <body class="">
 <div id="wrapper">
   <!-- preloader -->
+ 
   
   <!-- Header -->
   <header id="header" class="header">
@@ -83,7 +84,7 @@
                 <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a class="text-white" href="#">contact@yourdomain.com</a> </li>
                 <li class="sm-display-block mt-sm-10 mb-sm-10">
                   <!-- Modal: Appointment Starts -->
-                  <a class="bg-light p-5 text-theme-colored font-11 pl-10 pr-10"data-toggle="modal" data-target="#BSParentModal" href="assets/ajax-load/form-appointment.html">Make an Appointment</a>
+                  <a class="bg-light p-5 text-theme-colored font-11 pl-10 pr-10"data-toggle="modal" data-target="#BSParentModal" href="ajax-load/form-appointment.html">Make an Appointment</a>
                   <!-- Modal: Appointment End -->
                 </li>
               </ul>
@@ -1138,7 +1139,7 @@
                         <li><a href="shortcode-forms.html"><i class="fa fa-align-justify"></i> Forms</a></li>
                         <li><a href="shortcode-iconbox.html"><i class="fa fa-unsorted"></i> Icon Box</a></li>
                         <li><a href="shortcode-icon-7stroke.html"><i class="fa fa-circle-o"></i> Icons 7stroke</a></li>
-                        <li><a href="#"><i class="fa fa-eye-slash"></i> Icons Elegant</a></li>
+                        <li><a href="shortcode-icon-elegant-icons.html"><i class="fa fa-eye-slash"></i> Icons Elegant</a></li>
                         <li><a href="shortcode-icon-flat-color-icons.html"><i class="fa fa-i-cursor"></i> Icons Flat Color</a></li>
                         <li><a href="shortcode-icon-fontawesome.html"><i class="fa fa-fort-awesome"></i> Icons FontAwesome</a></li>
                         <li><a href="shortcode-icon-fontawesome-tutorial.html"><i class="fa fa-fonticons"></i> Icons FontAwesome Tutorial</a></li>
@@ -1205,11 +1206,11 @@
         <div class="section-content">
           <div class="row"> 
             <div class="col-md-12 xs-text-center">
-              <h3 class="font-28">Appoinment</h3>
+              <h3 class="text-theme-colored font-36">List Of Our Doctors</h3>
               <ol class="breadcrumb white mt-10">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Pages</a></li>
-                <li class="active text-theme-colored">Appoinment</li>
+                <li><a href="#">Appointments</a></li>
+                <li class="active text-theme-colored">List Of Doctors</li>
               </ol>
             </div>
           </div>
@@ -1217,231 +1218,67 @@
       </div>
     </section>
 
-    <!-- Section: Appointment -->
+    <!-- Section: event calendar -->
     <section>
-      <div class="container pb-0">
-        <div class="section-content">
-          <div class="row">
-            <div class="col-md-7">
-              <h4 class="text-theme-colored title-border mt-0">Make An appointment Now</h4>
-              <p>Welcome in our platform</p>
-              <div class="alert alert-info" role="alert">
-                  NB: If the appoitment was accepted after modification he will have the state of running, doctor need to accept another time... ! Welcome
-              </div>
-              <br>
-              
-
-              <!-- Appointment Form Sart-->
-              <form >
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group mb-10">
-                        
-                      <input  class="form-control" type="text" required minlength="3" maxlength="15" name="title" ngModel  [(ngModel)]="titleText" #title="ngModel" (change)="log(title)">
-                      <div class="alert alert-danger" *ngIf="title.touched &&  !title.valid">
-                          <div *ngIf="title.errors.required"> title is required.</div>
-                          <div *ngIf="title.errors.minlength">minimum {{ title.errors.minlength.requiredLength}} characters. </div>
-                       </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group mb-10">
-                      
-                    
-                <input   type="date"  class="form-control required"  name="date" ngModel  [(ngModel)]="dateText" #date="ngModel" (change)="log(date)" >
-                <div class="alert alert-danger" *ngIf=" !getDiferenceInDays(date.value) ">
-                    <div > object is required.</div>
-                    
-                 </div>
-                    </div>
-                   
-                  </div>                 
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="form-group mb-10">
-                        <input type="text" name="object"  class="form-control required" ngModel required minlength="7" maxlength="35"   [(ngModel)]="objectText" #object="ngModel" (change)="log(object)" >
-                        <div class="alert alert-danger" *ngIf="object.touched &&  !object.valid">
-                            <div *ngIf="object.errors.required"> object is required.</div>
-                            <div *ngIf="object.errors.minlength">minimum {{ object.errors.minlength.requiredLength}} characters. 
-                         </div>
-                      </div>
-                      </div>
-                  </div> 
-                  <div class="row">
-                      <div class="col-sm-6">
-                        <div class="form-group mb-10">
-                            <select name="start"  class="form-control required" ngModel required  [(ngModel)]="startText" #start="ngModel" (change)="log1(start)">
-                              <option>select start hour</option>
-                              <option >8H:00 Am</option>
-                              <option >9H:00 Am</option>
-                              <option >10H:00 Am</option>
-                              <option >11H:00 Am</option>
-                              <option >14H:00 Pm</option>
-                              <option >15H:00 Pm</option>
-                              <option >16H:00 Pm</option>
-                              <option >17H:00 Pm</option>
-                            </select>
-                            <div class="alert alert-danger" *ngIf="start.touched && start.value =='select start hour' ">
-                                <div> start is required.</div>
-                              </div>
-                           
-    
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+           
+           
+            <div class="upcoming-events media maxwidth400 bg-light mb-20" *ngFor="let doc of doctors">
+                <div class="row equal-height">
+                    <div class="col-sm-4 pr-0 pr-sm-15">
+                        <div class="thumb p-15">
+                            <img class="img-fullwidth" src="../../assets/images/photos/p2f.jpg" alt="...">
                         </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group mb-10"> 
-                            <input type="text" ngModel class="form-control required" name="end"   [(ngModel)]="endText" #end="ngModel" (change)="log(end)"  disabled>
-                               
-                             
+                    </div>
+                    <div class="col-sm-4 border-right pl-0 pl-sm-15">
+                        <div class="event-details p-15 mt-20">
+                            <h4 class="media-heading text-uppercase font-weight-500"> {{doc.firstName}} - {{doc.lastName}}  </h4>
+                            <p>(actif depuis: {{doc.lastLogin}} ))</p>
+                            <p>Email : {{doc.email}} </p>
+                            <p>Phone :  {{doc.phone}} </p>
+                            <ul>
+                                <li class="mb-10 text-theme-colored"><i class="fa fa-map-marker mr-5"></i>Ville : {{doc.adress.rue}} .</li>
+                                <li class="text-theme-colored"><i class="fa fa-map-marker mr-5"></i>Rue : {{doc.adress.ville}} 75000.</li>
+                            </ul>
+                            <a href="#" class="btn btn-flat btn-dark btn-theme-colored btn-sm mt-10"   [routerLink]="['/addAppointment',doc.id]">Make appointment <i class="fa fa-angle-double-right"></i></a> | <a href="#" class="btn btn-flat btn-dark btn-theme-colored btn-sm mt-10">Availability <i class="fa fa-angle-double-right"></i></a> 
                             
                         </div>
-                      </div>                 
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="event-count p-15 mt-15">
+                            <p>Rate:</p>
+                            <star-rating-comp [starType]="'svg'" [showHalfStars]="true" (onClick)="onClick($event)" [readOnly]="true"  [rating]=" 3  "></star-rating-comp>
+
+                       
+                            <ul class="event-date list-inline font-16 text-uppercase mt-10 mb-20">
+                                <li class="p-15 mr-5 bg-lightest"><span>Membre Depuis:</span> <br>{{ doc.creationDate}}</li>
+                                
+                            </ul>
+                            <ul>
+                                
+                                    
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group mb-10">
-                          <input type="text" class="form-control required" name="message" ngModel required minlength="10"   [(ngModel)]="messageText" #message="ngModel" (change)="log(message)" >
-                          <div class="alert alert-danger" *ngIf="message.touched &&  !message.valid">
-                              <div *ngIf="message.errors.required"> object is required.</div>
-                              <div *ngIf="message.errors.minlength">minimum {{ message.errors.minlength.requiredLength}} characters. </div>
-                           </div>
-                        </div>
-                    </div> 
-                    
-                  </div>
-              
-                <div class="form-group mb-0 mt-20">
-                  <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
-                  <button type="submit" class="btn btn-dark btn-theme-colored btn-lg btn-flat"  (click)="addAppointment()" data-loading-text="Please wait...">Submit Now</button>
-                </div>
-              </form>
-              
-              <!-- Appointment Form Validation-->
-              <script type="text/javascript">
-                $("#appointment_form").validate({
-                  submitHandler: function(form) {
-                    var form_btn = $(form).find('button[type="submit"]');
-                    var form_result_div = '#form-result';
-                    $(form_result_div).remove();
-                    form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-                    var form_btn_old_msg = form_btn.html();
-                    form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-                    $(form).ajaxSubmit({
-                      dataType:  'json',
-                      success: function(data) {
-                        if( data.status == 'true' ) {
-                          $(form).find('.form-control').val('');
-                        }
-                        form_btn.prop('disabled', false).html(form_btn_old_msg);
-                        $(form_result_div).html(data.message).fadeIn('slow');
-                        setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
-                      }
-                    });
-                  }
-                });
-              </script>
-              <!-- Appointment Form Ends -->
-
             </div>
-            <div class="col-md-5">
-              <img alt="" src="assets/images/photos/1.png" class="img-responsive img-fullwidth">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: Services -->
-    <section class="bg-lighter">
-      <div class="container pb-10">
-        <div class="section-content">
-          <div class="row features-style1 text-center mt-20">
-            <div class="col-sm-4">
-              <div class="icon-box left media p-0"> <a href="#" class="media-left pull-left icon icon-gray icon-sm icon-bordered"><i class="icon-ambulance14 text-theme-colored"></i></a>
-                <div class="media-body">
-                  <h5 class="media-heading heading">Emergency Care</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="icon-box left media p-0"> <a href="#" class="media-left pull-left icon icon-gray icon-sm icon-bordered"><i class="icon-illness text-theme-colored"></i></a>
-                <div class="media-body">
-                  <h5 class="media-heading heading">Operation Theatre</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="icon-box left media p-0"> <a href="#" class="media-left pull-left icon icon-gray icon-sm icon-bordered"><i class="icon-stethoscope10 text-theme-colored"></i></a>
-                <div class="media-body">
-                  <h5 class="media-heading heading">Outdoor Checkup</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="icon-box left media p-0"> <a href="#" class="media-left pull-left icon icon-gray icon-sm icon-bordered"><i class="icon-medical51 text-theme-colored"></i></a>
-                <div class="media-body">
-                  <h5 class="media-heading heading">Cancer Service</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="icon-box left media p-0"> <a href="#" class="media-left pull-left icon icon-gray icon-sm icon-bordered"><i class="icon-hospital35 text-theme-colored"></i></a>
-                <div class="media-body">
-                  <h5 class="media-heading heading">Blood Test</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="icon-box left media p-0"> <a href="#" class="media-left pull-left icon icon-gray icon-sm icon-bordered"><i class="icon-tablets9 text-theme-colored"></i></a>
-                <div class="media-body">
-                  <h5 class="media-heading heading">Pharmacy</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: funfact -->
-    <section class="divider parallax layer-overlay overlay-light" data-stellar-background-ratio="0.5" data-bg-img="assets/images/bg/bg1.jpg">
-      <div class="container pt-120 pb-120">
-        <div class="section-content">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
-              <div class="funfact text-center"> 
-                <a href="#"> <i class="icon-heart36 text-theme-colored font-60"></i></a>
-                <h5 class="number text-theme-colored font-32">19100+</h5>
-                <h6 class="title text-gray font-16">Happy Patients</h6>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
-              <div class="funfact text-center"> 
-                <a href="#"> <i class="icon-medical51 text-theme-colored font-60"></i></a>
-                <h5 class="number text-theme-colored font-32">129</h5>
-                <h6 class="title text-gray font-16">Qualified Doctors</h6>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
-              <div class="funfact text-center"> 
-                <a href="#"> <i class="icon_building text-theme-colored font-60"></i></a>
-                <h5 class="number text-theme-colored font-32">850+</h5>
-                <h6 class="title text-gray font-16">Clinic Rooms</h6>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
-              <div class="funfact text-center"> 
-                <a href="#"> <i class="icon_gift_alt text-theme-colored font-60"></i></a>
-                <h5 class="number text-theme-colored font-32">456</h5>
-                <h6 class="title text-gray font-16">Awards Won</h6>
+           
+            <div class="row">
+              <div class="col-sm-12">
+                <nav>
+                  <ul class="pagination theme-colored pull-right xs-pull-center mb-xs-40">
+                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">...</a></li>
+                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>
@@ -1555,5 +1392,5 @@
 
 </body>
 
-<!-- Mirrored from thememascot.net/demo/html/health-beauty/medical/medinova-html/v3.2/demo/page-appointment.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 11 Nov 2018 18:52:08 GMT -->
+<!-- Mirrored from thememascot.net/demo/html/health-beauty/medical/medinova-html/v3.2/demo/events-list-no-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 11 Nov 2018 18:52:38 GMT -->
 </html>

@@ -24,7 +24,7 @@ export class UpdateAppComponent implements OnInit {
   today : Date
   user : User = new User()
   
-  @Input() app:Appointment= new Appointment("","","","","","","",5)
+  @Input() app:Appointment= new Appointment("","","","","","","",0)
   constructor(private service : SeviceRdvService,private router:Router,private activatedRoute: ActivatedRoute) {
     
    }
@@ -52,6 +52,7 @@ export class UpdateAppComponent implements OnInit {
   
   log(x) {
     console.log(x)
+    console.log('dateText'+this.dateText)
   }
 
   updateAppointment(edv:object) {
