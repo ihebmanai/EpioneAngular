@@ -17,8 +17,8 @@ export class User {
             token : string 
             numberSocialSecurity : string 
             trated : number 
-            codeDoctor : number 
-
-
+            codeDoctor : number     
+            
+            
 
 }

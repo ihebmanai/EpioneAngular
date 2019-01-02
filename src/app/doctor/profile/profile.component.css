@@ -1,0 +1,35 @@
+body{padding-top:30px;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+.s8ir{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.taswira{
+    height: 400px;
+    width: 280px;
+}
+.kbir{
+    height: 600px;
+    width: 1200px;
+}
+
+.map{
+    height: 300px;
+    width: 500px;
+    background-color: aqua;
+}
+.mapboxgl-marker {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border:1px solid gray;
+    background-color:lightblue;
+}

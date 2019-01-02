@@ -1,0 +1,41 @@
+.nn{
+    
+display: flex;
+align-self: flex-end;
+justify-content: center;
+
+margin-bottom: 60px
+
+}
+.doctors{
+    margin-top: 25px;
+}
+
+.formi{
+    display: flex;
+align-items: flex-end;
+
+}
+.pull-left {
+
+    float: left !important;
+
+}
+
+.pull-right {
+
+    float: right !important;
+
+}
+.map{
+    height: 300px;
+    width: 500px;
+    background-color: aqua;
+}
+.mapboxgl-marker {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border:1px solid gray;
+    background-color:lightblue;
+}
