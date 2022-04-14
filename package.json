@@ -25,7 +25,7 @@
     "@types/bingmaps": "0.0.1",
     "angular-maps": "^6.0.1",
     "angular-star-rating": "^2.0.0-rc.5",
-    "async": "^2.5.0",
+    "async": "^3.2.2",
     "bingmaps": "^2.0.3",
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",
