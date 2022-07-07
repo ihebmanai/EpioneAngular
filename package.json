@@ -33,7 +33,7 @@
     "jquery": "^3.3.1",
     "json-loader": "^0.5.7",
     "mapbox-gl": "^0.51.0",
-    "moment": "^2.23.0",
+    "moment": "^2.29.4",
     "ng2-modal": "0.0.25",
     "ng2-opd-popup": "^1.1.21",
     "ngx-countdown": "^3.1.0",
